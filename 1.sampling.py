@@ -1,4 +1,4 @@
-﻿""" sampling.py
+﻿""" 1.sampling.py
 Manual sampling.  """
 
 import tkinter as tk
