@@ -17,7 +17,7 @@ window.geometry('2000x800')
 canvas = tk.Canvas(window, width=width, height=height, bg='white')
 
 # Image
-image = tk.PhotoImage(file='carte_france.png')
+image = tk.PhotoImage(file='france_map.png') 
 canvas.create_image(width//2, height//2, image=image)
 canvas.create_text(width-80, 30, text='Sample size : ' + str(len(Lx)))
 canvas.pack(expand=False, padx=3, pady=3)
