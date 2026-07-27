@@ -1,20 +1,23 @@
 ﻿"""
-animation.py
-Given circles parameters, animates the epicycloid plot.
+3.animation.py
+Given sample lists and circles parameters, animates the epicycloid plot.
 
 Inputs :
+    Lx : list of xcoordinates
+    Ly : list of ycoordinates
     r (dict) : radius of circles. Keys (int) are indexes in the Fourier paradigm and values (float) are corresponding radius.
     theta (dict) : phase at origin of circles. Keys (int) are indexes in the Fourier paradigm and values (float) are corresponding phase at origin.
 """
 
 from math import *
+tau = 2*np.pi
 import matplotlib.pyplot as plt
 import numpy as np
-tau = 2*np.pi
 
 def indexmax(d:dict)->int:
     """
-    Given a dictionnary, return the key of the maximal element. Returns None if empty
+    Given a dictionnary, returns the key of the maximal element.
+    Returns None if empty.
     """
     max = -1e99
     for key in d:
@@ -42,12 +45,12 @@ for n in range(1, N):
     A[n, :] = [r[index], theta[index], index]
     r[index] = 0
 
-def cercle(O, R, nb):
+def cercle(O:tuple, R:float, nb:int)->list:
     """
-    Crée deux listes : la suite des abcisses et la suite des ordonnées d'un cercle
-    O (tuple) : centre du cercle, désigné par ses coordonnées
-    R (float) : rayon du cercle
-    nb (int) : précision du tracé (nombre de côtés du polygone)
+    Given a tuple O and a radius R, returns two arrays for each regular sampling coordinate on a circe with origin O and radius R.
+    O (tuple) : circle center
+    R (float) : circle radius
+    nb (int) : number of steps
     """
     t = np.linspace(0, tau, nb)
     x = O[0] + R*np.cos(t)
@@ -55,11 +58,11 @@ def cercle(O, R, nb):
     return [x, y]
 
 
-def points(t, O = [r[0]*cos(theta[0]), r[0]*sin(theta[0])]):
+def points(t:float, O = [r[0]*cos(theta[0]), r[0]*sin(theta[0])]):
     """
-    Donne la suite des centres des cercles au temps t.
+    Returns circle centers at date t.
     """
-    # Axe 0 : points ; Axe 1 : abcisses et ordonnées
+    # Axis 0 : points ; Axis 1 : coordinates
     P = np.zeros((N, 2))
     P[0, :]= O
     for n in range(1, N):
