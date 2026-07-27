@@ -91,7 +91,7 @@ for n in range(-N, N+1):
             print(n, k, t)
 
     c[n] = integral(integrand, 0, tau, 100*(abs(n)+1))
-    # Display loading on shell
+    # Display loading status on shell
     print(str(n) + '/' + str(N))
 
 r, theta = {}, {}
